@@ -8,7 +8,12 @@ import {Component, Input} from '@angular/core';
 })
 
 export class GalleryComponent { 
- 
+   /*x: number = 0;
+   y: number = 0;
+   startX: number = 0;
+   startY: number = 0;*/
+   pinchScale: number = 1;
+
    @Input() datasource;
    selectedImage;
  
@@ -16,10 +21,24 @@ export class GalleryComponent {
       this.selectedImage= image;	
    }
 
+   swipe(type){
+      var forward;
+      if(type=='swipeleft'){
+         forward = true;
+      }
+      else if(type=='swiperight'){
+         forward = false;
+      }
+      var index = this.datasource.indexOf(this.selectedImage)+(forward ? 1: -1);
+      if(index >= 0 && index < this.datasource.length){
+         this.selectedImage = this.datasource[index];   
+      }
+   }
+
    navigate(forward){
    	var index = this.datasource.indexOf(this.selectedImage)+(forward ? 1: -1);
    	if(index >= 0 && index < this.datasource.length){
-      this.selectedImage = this.datasource[index];	
+         this.selectedImage = this.datasource[index];	
    	}
 	}
 	hotkeys(event){
@@ -31,4 +50,20 @@ export class GalleryComponent {
       }
    	}
 	}
+
+   onPinch(event: any): void {
+      this.pinchScale = event.scale;
+   }
+
+   /*onPanStart(event: any): void {
+     event.preventDefault();
+     this.startX = this.x;
+     this.startY = this.y;
+   }
+
+   onPan(event: any): void {
+     event.preventDefault();
+     this.x = this.startX + event.deltaX;
+     this.y = this.startY + event.deltaY;
+   }*/
 }

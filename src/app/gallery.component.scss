@@ -1,23 +1,9 @@
-ul { 
-	padding:0; 
-	width:804px; 
-	margin:20px auto
-}
-li { 
-	margin: 5px;
-	display:inline-block;
-	position: relative;
-	height: 146px;
-	width: 191px;
-	box-shadow:#999 1px 1px 3px 1px; 
- 	cursor: pointer
-}
 .descriptionLayer{
 	position: absolute;
 	top: 0;
   bottom: 0;
-  left: 0;
-  right: 0;
+  left: 15px;
+  right: 15px;
   background: rgba(36, 62, 206, 0.6);
   color: #fff;
   visibility: hidden;
@@ -29,7 +15,7 @@ li {
   /* transition effect. not necessary */
   transition: opacity .2s, visibility .2s;
 }
-li:hover .descriptionLayer{
+.imageDiv:hover .descriptionLayer{
 	visibility: visible;
 	opacity: 1;
 }
@@ -37,21 +23,11 @@ li:hover .descriptionLayer{
 	transition: .2s;
 	transform: translateY(1em);
 }
-li:hover .description{
+.imageDiv:hover .description{
 	transform: translateY(0);
 }
 .modal{
 	text-align: center;
-}
-.modal-content {
-	width: 670px !important;
-}
-.selectedImage img{
-	width: 100%;
-}
-.selectedImage{ 
-	width:640px;
-	position:relative 
 }
 .caption{
 	position:absolute;
@@ -70,16 +46,32 @@ p {
    -webkit-margin-before: 5px !important;
    -webkit-margin-after: 5px !important;
 }
+.selectedImage{
+	position: relative;
+}
 .arrow-back, .arrow-forward{
 	position:absolute;
 	opacity:0.9;
 	background-color:black;
 	padding:10px;
-	top:160px;
+	top:calc(50% - 20px);
 	color:white;
 	text-weight:bold;
 	cursor:pointer;
 }
 .arrow-forward{
-	left:612px;
+	right:0px;
+}
+div.imageDiv{
+	height: 200px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	position: relative;
+	cursor: pointer;
+}
+div.imageDiv img{
+	object-fit: cover;
+	box-shadow:#999 1px 1px 3px 1px;
+	height: 100%;
+	width: 100%;
 }

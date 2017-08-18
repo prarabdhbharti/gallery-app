@@ -2,8 +2,8 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-         <div class="selectedImage" *ngIf="selectedImage">
-				   <img src="{{selectedImage.url}}" >
+         <div (swipeleft)="swipe($event.type)" (swiperight)="swipe($event.type)" (pinch)="onPinch($event)" class="selectedImage" *ngIf="selectedImage">
+				   <img src="{{selectedImage.url}}" class="img-responsive">
 				   <div class="arrow-back" (click)=navigate(false)>
 						  &lt;
 					 </div>
@@ -15,13 +15,15 @@
     </div>
   </div>
 </div>
-<ul id="thumbnailsList">
-   <li *ngFor="let image of datasource">
-      <img src="{{image.url}}" width="191" height="146">
+<div class="container">
+  <div class="row imageTiles">
+    <div *ngFor="let image of datasource" class="col-lg-3 col-md-3 col-sm-3 col-xs-6 imageDiv">
+      <img src="{{image.url}}" class="img-responsive">
       <div class="descriptionLayer" data-toggle="modal" data-target="#selectedImageModal" (click)=setSelectedImage(image)>
-      	<p class="description">
-      		{{image.title}}
-      	</p>
+        <p class="description">
+          {{image.title}}
+        </p>
       </div>
-   </li>
-</ul>
+    </div>
+  </div>
+</div>
