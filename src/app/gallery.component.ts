@@ -36,53 +36,6 @@ export class GalleryComponent {
       this.selectedImage= image;	
       setTimeout(()=>{
          this.rect = document.getElementById('imageDiv');
-         this.hammertime = Hammer(document.getElementById('modalBody'),{
-           transform_always_block: true,
-           transform_min_scale: 1,
-           drag_block_horizontal: false,
-           drag_block_vertical: false,
-           drag_min_distance: 0
-         });
-         console.log(this.hammertime);
-         this.hammertime.on('touch drag transform dragend', function(ev){
-            console.log(ev);
-            switch (ev.type) {
-               case "touch":
-                  this.last_scale = this.scale;
-                  break;
-
-               case "drag":
-                                 
-                  break;
-               case 'transform':
-                  this.scale = Math.max(1, Math.min(this.last_scale * ev.gesture.scale, 10));
-                  break;
-
-               case 'dragend':
-                  this.last_posX = this.posX;
-                  this.last_posY = this.posY;
-                  break;
-            }
-            if(this.scale > 1){
-               this.transform =
-                  "translate3d("+this.posX+"px,"+this.posY+"px, 0) " +
-                  "scale3d("+this.scale+","+this.scale+", 0) ";
-            }
-            else{
-               this.transform =
-                  "translate3d(0, 0, 0) " +
-                  "scale3d(1, 1, 0) ";   
-                  this.posX = 0;
-                  this.posY = 0;
-                  this.last_posX = 0;
-                  this.last_posY = 0;
-            }
-            this.rect.style.transform = this.transform;
-            this.rect.style.oTransform = this.transform;
-            this.rect.style.msTransform = this.transform;
-            this.rect.style.mozTransform = this.transform;
-            this.rect.style.webkitTransform = this.transform;
-         })
       },100)
    }
 
