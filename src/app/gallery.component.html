@@ -1,16 +1,20 @@
 <div class="modal fade" id="selectedImageModal" >
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-         <div (swipeleft)="swipe($event.type)" (swiperight)="swipe($event.type)" (pinch)="onPinch($event)" class="selectedImage" *ngIf="selectedImage">
-				   <img src="{{selectedImage.url}}" class="img-responsive">
-				   <div class="arrow-back" (click)=navigate(false)>
-						  &lt;
-					 </div>
-					 <div class="arrow-forward" (click)=navigate(true)>
-						  &gt;
-					 </div>	
+    <div class="modal-content" *ngIf="selectedImage">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">{{selectedImage.title}}</h4>
+      </div>
+      <div class="modal-body" id="modalBody" #modalBody>
+        <div style="overflow:hidden" (swipeleft)="swipe($event.type)" (swiperight)="swipe($event.type)" class="selectedImage" (pinch)="onPinch($event)" (pan)="onPan($event)" (panend)="onPanEnd($event)">
+				   <img id="imageDiv" src="{{selectedImage.url}}" class="img-responsive">
 				</div>
+        <div class="arrow-back" (click)=navigate(false)>
+            &lt;
+         </div>
+         <div class="arrow-forward" (click)=navigate(true)>
+            &gt;
+         </div> 
       </div>
     </div>
   </div>

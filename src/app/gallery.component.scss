@@ -49,6 +49,9 @@ p {
 .selectedImage{
 	position: relative;
 }
+.modal-body{
+	position: relative;
+}
 .arrow-back, .arrow-forward{
 	position:absolute;
 	opacity:0.9;
@@ -60,7 +63,7 @@ p {
 	cursor:pointer;
 }
 .arrow-forward{
-	right:0px;
+	right:15px;
 }
 div.imageDiv{
 	height: 200px;
